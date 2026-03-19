@@ -1,0 +1,40 @@
+# 关节状态控制器
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50.0
+
+# X轴平移控制器
+virtual_6dof_x_trans_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: virtual_6dof_x_trans_joint
+  pid: {p: 800.0, i: 0.0, d: 80.0}
+
+# Y轴平移控制器
+virtual_6dof_y_trans_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: virtual_6dof_y_trans_joint
+  pid: {p: 800.0, i: 0.0, d: 80.0}
+
+# Z轴平移控制器
+virtual_6dof_z_trans_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: virtual_6dof_z_trans_joint
+  pid: {p: 800.0, i: 0.0, d: 80.0}
+
+# Roll旋转控制器
+virtual_6dof_roll_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: virtual_6dof_roll_joint
+  pid: {p: 300.0, i: 0.0, d: 30.0}
+
+# Pitch旋转控制器
+virtual_6dof_pitch_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: virtual_6dof_pitch_joint
+  pid: {p: 300.0, i: 0.0, d: 30.0}
+
+# Yaw旋转控制器
+virtual_6dof_yaw_joint_position_controller:
+  type: position_controllers/JointPositionController
+  joint: virtual_6dof_yaw_joint
+  pid: {p: 300.0, i: 0.0, d: 30.0}

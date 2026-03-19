@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot name="simple_lidar_on_platform" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <!-- 引入您的6DOF平台宏 -->
+  <xacro:include filename="$(find virtual_6dof)/urdf/virtual_6dof.xacro" />
+
+  <!-- 【关键修复】定义虚拟的 world 链接以满足 URDF 解析器 -->
+  <link name="world"/>
+
+  <!-- 定义一个非常简单的雷达连杆（作为末端执行器） -->
+  <link name="simple_lidar_link">
+    <visual>
+      <!-- 改为 URDF 支持的圆柱体 -->
+      <geometry><cylinder length="0.1" radius="0.05"/></geometry>
+      <material name="red"/>
+    </visual>
+    <!-- 碰撞体可以很小，但不能为零 -->
+    <collision><geometry><sphere radius="0.02"/></geometry></collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
+    </inertial>
+  </link>
+
+  <!-- 简单的激光雷达传感器插件，用于在Gazebo中可视化扫描线 -->
+  <gazebo reference="simple_lidar_link">
+    <sensor name="simple_lidar_sensor" type="ray">
+      <always_on>true</always_on>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>180</samples>
+            <resolution>1.0</resolution>
+            <min_angle>-1.57</min_angle> <!-- -90度 -->
+            <max_angle>1.57</max_angle>  <!-- +90度 -->
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="simple_lidar_controller" filename="libgazebo_ros_ray_sensor.so">
+        <topicName>/simple_lidar/scan</topicName>
+        <frameName>simple_lidar_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- ===================== 安装6DOF运动平台 ===================== -->
+  <!-- 直接将平台安装在“world”上，末端连接我们定义的简单雷达 -->
+  <xacro:virtual_6dof 
+    parent_link="world"              
+    end_link="simple_lidar_link"> 
+    
+    <!-- 平台在world中的初始安装位置 (X, Y, Z) -->
+    <origin xyz="0 0 1" rpy="0 0 0"/>
+    
+    <!-- 雷达在平台末端的微小偏移，使其位于平台上方 -->
+    <end_effector_offset xyz="0 0 0" rpy="0 0 0"/>
+    
+  </xacro:virtual_6dof>
+
+</robot>

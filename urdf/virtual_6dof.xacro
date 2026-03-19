@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="virtual_6dof" xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:macro name="virtual_6dof" 
+    params="parent_link end_link *origin_offset *end_effector_offset">
+    <!-- 平台基座连杆（连接外部父连杆） -->
+    <link name="virtual_6dof_base_link">
+      <inertial>
+        <mass value="0.5"/>
+        <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+      </inertial>
+      <visual>
+        <geometry><box size="0 0 0"/></geometry>
+        <material name="dark_gray"><color rgba="0.3 0.3 0.3 1"/></material>
+      </visual>
+      <collision><geometry><box size="0 0 0"/></geometry></collision>
+    </link>
+
+    <!-- 安装关节：连接外部父连杆和平台基座 -->
+    <joint name="virtual_6dof_base_joint" type="fixed">
+      <parent link="${parent_link}"/>
+      <child link="virtual_6dof_base_link"/>
+      <xacro:insert_block name="origin_offset"/>
+    </joint>
+
+    <!-- ===================== 6自由度运动关节链 ===================== -->
+
+    <!-- 1. X轴平移关节 -->
+    <joint name="virtual_6dof_x_trans_joint" type="prismatic">
+      <parent link="virtual_6dof_base_link"/>
+      <child link="virtual_6dof_x_trans_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-50.0" upper="50.0" effort="100" velocity="0.5"/>
+      <dynamics damping="15.0" friction="1.0"/>
+    </joint>
+    <link name="virtual_6dof_x_trans_link">
+      <visual>
+        <geometry><box size="0 0 0"/></geometry>
+        <material name="x_axis"><color rgba="1 0.2 0.2 1"/></material>
+      </visual>
+      <collision><geometry><box size="0 0 0"/></geometry></collision>
+      <inertial>
+        <mass value="0.3"/>
+        <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0005"/>
+      </inertial>
+    </link>
+
+    <!-- 2. Y轴平移关节 -->
+    <joint name="virtual_6dof_y_trans_joint" type="prismatic">
+      <parent link="virtual_6dof_x_trans_link"/>
+      <child link="virtual_6dof_y_trans_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-50.0" upper="50.0" effort="100" velocity="0.5"/>
+      <dynamics damping="15.0" friction="1.0"/>
+    </joint>
+    <link name="virtual_6dof_y_trans_link">
+      <visual>
+        <geometry><box size="0 0 0"/></geometry>
+        <material name="y_axis"><color rgba="0.2 1 0.2 1"/></material>
+      </visual>
+      <collision><geometry><box size="0 0 0"/></geometry></collision>
+      <inertial>
+        <mass value="0.3"/>
+        <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0005"/>
+      </inertial>
+    </link>
+
+    <!-- 3. Z轴平移关节 -->
+    <joint name="virtual_6dof_z_trans_joint" type="prismatic">
+      <parent link="virtual_6dof_y_trans_link"/>
+      <child link="virtual_6dof_z_trans_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-50.0" upper="50.0" effort="100" velocity="0.5"/>
+      <dynamics damping="15.0" friction="1.0"/>
+    </joint>
+    <link name="virtual_6dof_z_trans_link">
+      <visual>
+        <geometry><box size="0 0 0"/></geometry>
+        <material name="z_axis"><color rgba="0.2 0.2 1 1"/></material>
+      </visual>
+      <collision><geometry><box size="0 0 0"/></geometry></collision>
+      <inertial>
+        <mass value="0.3"/>
+        <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0005"/>
+      </inertial>
+    </link>
+
+    <!-- 4. Roll关节（绕X轴旋转） -->
+    <joint name="virtual_6dof_roll_joint" type="revolute">
+      <parent link="virtual_6dof_z_trans_link"/>
+      <child link="virtual_6dof_roll_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="1 0 0"/>
+      <limit lower="-3.14" upper="3.14" effort="30" velocity="2.0"/>
+      <dynamics damping="15.0" friction="1.0"/>
+    </joint>
+    <link name="virtual_6dof_roll_link">
+      <visual>
+        <geometry><box size="0 0 0"/></geometry>
+        <material name="roll"><color rgba="1 0.5 0 1"/></material>
+      </visual>
+      <collision><geometry><box size="0 0 0"/></geometry></collision>
+      <inertial>
+        <mass value="0.001"/>
+        <inertia ixx="0.0002" ixy="0.0" ixz="0.0" iyy="0.0002" iyz="0.0" izz="0.0002"/>
+      </inertial>
+    </link>
+
+    <!-- 5. Pitch关节（绕Y轴旋转） -->
+    <joint name="virtual_6dof_pitch_joint" type="revolute">
+      <parent link="virtual_6dof_roll_link"/>
+      <child link="virtual_6dof_pitch_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-1.57" upper="1.57" effort="30" velocity="2.0"/>
+      <dynamics damping="8.0" friction="0.3"/>
+    </joint>
+    <link name="virtual_6dof_pitch_link">
+      <visual>
+        <geometry><box size="0 0 0"/></geometry>
+        <material name="roll"><color rgba="1 0.5 0 1"/></material>
+      </visual>
+      <collision><geometry><box size="0 0 0"/></geometry></collision>
+      <inertial>
+        <mass value="0.001"/>
+        <inertia ixx="0.0002" ixy="0.0" ixz="0.0" iyy="0.0002" iyz="0.0" izz="0.0002"/>
+      </inertial>
+    </link>
+
+    <!-- 6. Yaw关节（绕Z轴旋转） -->
+    <joint name="virtual_6dof_yaw_joint" type="revolute">
+      <parent link="virtual_6dof_pitch_link"/>
+      <child link="virtual_6dof_yaw_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-3.14" upper="3.14" effort="30" velocity="2.0"/>
+      <dynamics damping="8.0" friction="0.3"/>
+    </joint>
+    <link name="virtual_6dof_yaw_link">
+      <visual>
+        <geometry><box size="0 0 0"/></geometry>
+        <material name="roll"><color rgba="1 0.5 0 1"/></material>
+      </visual>
+      <collision><geometry><box size="0 0 0"/></geometry></collision>
+      <inertial>
+        <mass value="0.001"/>
+        <inertia ixx="0.0002" ixy="0.0" ixz="0.0" iyy="0.0002" iyz="0.0" izz="0.0002"/>
+      </inertial>
+    </link>
+
+    <!-- 末端执行器连接关节：连接平台末端和外部设备 -->
+    <joint name="virtual_6dof_end_effector_joint" type="fixed">
+      <parent link="virtual_6dof_yaw_link"/>
+      <child link="${end_link}"/>
+      <xacro:insert_block name="end_effector_offset"/>
+    </joint>
+
+    <!-- ===================== Gazebo插件配置 ===================== -->
+
+    <gazebo>
+      <plugin name="virtual_6dof_gazebo_ros_control" filename="libgazebo_ros_control.so">
+      </plugin>
+    </gazebo>
+
+    <!-- ===================== 传动装置定义 ===================== -->
+
+    <!-- X轴平移关节传动 -->
+    <transmission name="virtual_6dof_x_trans_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="virtual_6dof_x_trans_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="virtual_6dof_x_trans_joint_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <!-- Y轴平移关节传动 -->
+    <transmission name="virtual_6dof_y_trans_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="virtual_6dof_y_trans_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="virtual_6dof_y_trans_joint_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <!-- Z轴平移关节传动 -->
+    <transmission name="virtual_6dof_z_trans_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="virtual_6dof_z_trans_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="virtual_6dof_z_trans_joint_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <!-- Roll关节传动 -->
+    <transmission name="virtual_6dof_roll_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="virtual_6dof_roll_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="virtual_6dof_roll_joint_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <!-- Pitch关节传动 -->
+    <transmission name="virtual_6dof_pitch_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="virtual_6dof_pitch_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="virtual_6dof_pitch_joint_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <!-- Yaw关节传动 -->
+    <transmission name="virtual_6dof_yaw_joint_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="virtual_6dof_yaw_joint">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="virtual_6dof_yaw_joint_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+  </xacro:macro>
+
+</robot>
