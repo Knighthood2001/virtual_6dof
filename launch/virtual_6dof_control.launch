@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- 启动6DOF平台控制器 -->
+  <rosparam file="$(find virtual_6dof)/config/virtual_6dof_controllers.yaml" command="load"/>
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" 
+        output="screen" respawn="false"
+        args="joint_state_controller
+              virtual_6dof_x_trans_joint_position_controller
+              virtual_6dof_y_trans_joint_position_controller
+              virtual_6dof_z_trans_joint_position_controller
+              virtual_6dof_roll_joint_position_controller
+              virtual_6dof_pitch_joint_position_controller
+              virtual_6dof_yaw_joint_position_controller"/>
+</launch>

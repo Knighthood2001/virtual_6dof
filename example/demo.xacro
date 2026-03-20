@@ -55,13 +55,8 @@
   <xacro:virtual_6dof 
     parent_link="world"              
     end_link="simple_lidar_link"> 
-    
-    <!-- 平台在world中的初始安装位置 (X, Y, Z) -->
     <origin xyz="0 0 1" rpy="0 0 0"/>
-    
-    <!-- 雷达在平台末端的微小偏移，使其位于平台上方 -->
-    <end_effector_offset xyz="0 0 0" rpy="0 0 0"/>
-    
+    <origin xyz="1 0 0" rpy="0 0 0"/>
   </xacro:virtual_6dof>
 
 </robot>
