@@ -74,7 +74,7 @@ rostopic pub /virtual_6dof_yaw_joint_position_controller/command std_msgs/Float6
 ```
 
 2. 设置launch文件
-在你的launch文件中，你需要导入virtual_6dof的launch文件
+在你的launch文件中，你需要导入virtual_6dof的launch文件，例如[example/demo.launch](example/demo.launch)中：
 ```xml
 <include file="$(find virtual_6dof)/launch/virtual_6dof_control.launch" />
 ```
