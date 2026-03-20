@@ -52,6 +52,12 @@ rostopic pub /virtual_6dof_pitch_joint_position_controller/command std_msgs/Floa
 rostopic pub /virtual_6dof_yaw_joint_position_controller/command std_msgs/Float64 "data: 1.2" -1
 ```
 
+除了上面命令行的方式进行控制，我也把他写进了rqt中，你可以通过rqt的方式来控制。
+
+![Alt text](imgs/image.png)
+
+![Alt text](imgs/image-1.png)
+
 省去了每次设置安装位置的时候需要重启仿真，重新调整安装位置的问题。
 
 ## 在你自己的项目中导入我的模块

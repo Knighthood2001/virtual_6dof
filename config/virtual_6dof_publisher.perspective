@@ -1,0 +1,158 @@
+{
+  "keys": {},
+  "groups": {
+    "mainwindow": {
+      "keys": {
+        "geometry": {
+          "repr(QByteArray.hex)": "QtCore.QByteArray(b'01d9d0cb0003000000000171000002110000067e0000050700000171000002360000067e0000050700000000000000000a0000000171000002360000067e00000507')",
+          "type": "repr(QByteArray.hex)",
+          "pretty-print": "     q   ~   q 6 ~        q 6 ~  "
+        },
+        "state": {
+          "repr(QByteArray.hex)": "QtCore.QByteArray(b'000000ff00000000fd00000001000000030000050e000002a6fc0100000002fb00000058007200710074005f007000750062006c00690073006800650072005f005f005000750062006c00690073006800650072005f005f0031005f005f005000750062006c0069007300680065007200570069006400670065007401000000000000050e0000023d00fffffffb00000044007200710074005f00670072006100700068005f005f0052006f007300470072006100700068005f005f0031005f005f0052006f0073004700720061007000680055006901000002430000025900000000000000000000050e0000000000000004000000040000000800000008fc00000001000000030000000100000036004d0069006e0069006d0069007a006500640044006f0063006b00570069006400670065007400730054006f006f006c0062006100720000000000ffffffff0000000000000000')",
+          "type": "repr(QByteArray.hex)",
+          "pretty-print": "                 Xrqt_publisher__Publisher__1__PublisherWidget          Drqt_graph__RosGraph__1__RosGraphUi                            6MinimizedDockWidgetsToolbar        "
+        }
+      },
+      "groups": {
+        "toolbar_areas": {
+          "keys": {
+            "MinimizedDockWidgetsToolbar": {
+              "repr": "8",
+              "type": "repr"
+            }
+          },
+          "groups": {}
+        }
+      }
+    },
+    "pluginmanager": {
+      "keys": {
+        "running-plugins": {
+          "repr": "{'rqt_publisher/Publisher': [1]}",
+          "type": "repr"
+        }
+      },
+      "groups": {
+        "plugin__rqt_graph__RosGraph__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__RosGraphUi": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Node Graph'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "actionlib_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "auto_fit_graph_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "dead_sinks_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "filter_line_edit_text": {
+                  "repr": "'/'",
+                  "type": "repr"
+                },
+                "graph_type_combo_box_index": {
+                  "repr": "'2'",
+                  "type": "repr"
+                },
+                "group_image_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "group_tf_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "hide_dynamic_reconfigure_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "hide_tf_nodes_check_box_state": {
+                  "repr": "'false'",
+                  "type": "repr"
+                },
+                "highlight_connections_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "leaf_topics_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "namespace_cluster_spin_box_value": {
+                  "repr": "'2'",
+                  "type": "repr"
+                },
+                "quiet_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                },
+                "topic_filter_line_edit_text": {
+                  "repr": "'/'",
+                  "type": "repr"
+                },
+                "unreachable_check_box_state": {
+                  "repr": "'true'",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_publisher__Publisher__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__PublisherWidget": {
+              "keys": {
+                "dock_widget_title": {
+                  "repr": "'Message Publisher'",
+                  "type": "repr"
+                },
+                "dockable": {
+                  "repr": "True",
+                  "type": "repr"
+                },
+                "parent": {
+                  "repr": "None",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "publishers": {
+                  "repr": "\"[{'topic_name': '/virtual_6dof_x_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 3, 'counter': 708, 'expressions': {'/virtual_6dof_x_trans_joint_position_controller/command/data': '2'}}, {'topic_name': '/virtual_6dof_y_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 4, 'counter': 561, 'expressions': {'/virtual_6dof_y_trans_joint_position_controller/command/data': '1'}}, {'topic_name': '/virtual_6dof_z_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 6, 'counter': 578, 'expressions': {'/virtual_6dof_z_trans_joint_position_controller/command/data': '1'}}, {'topic_name': '/virtual_6dof_roll_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 7, 'counter': 945, 'expressions': {'/virtual_6dof_roll_joint_position_controller/command/data': '0'}}, {'topic_name': '/virtual_6dof_pitch_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 8, 'counter': 931, 'expressions': {'/virtual_6dof_pitch_joint_position_controller/command/data': '0'}}, {'topic_name': '/virtual_6dof_yaw_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 9, 'counter': 891, 'expressions': {'/virtual_6dof_yaw_joint_position_controller/command/data': '0'}}]\"",
+                  "type": "repr"
+                }
+              },
+              "groups": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

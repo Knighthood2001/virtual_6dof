@@ -11,4 +11,6 @@
               virtual_6dof_roll_joint_position_controller
               virtual_6dof_pitch_joint_position_controller
               virtual_6dof_yaw_joint_position_controller"/>
+  <node name="rqt_virtual_6dof" pkg="rqt_gui" type="rqt_gui" output="screen" 
+    args="--perspective-file $(find virtual_6dof)/config/virtual_6dof_publisher.perspective"/>
 </launch>
