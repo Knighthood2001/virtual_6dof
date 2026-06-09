@@ -1,16 +1,18 @@
 <?xml version="1.0"?>
 <launch>
-  <!-- 启动6DOF平台控制器 -->
-  <rosparam file="$(find virtual_6dof)/config/virtual_6dof_controllers.yaml" command="load"/>
-  <node name="controller_spawner" pkg="controller_manager" type="spawner" 
+  <arg name="prefix" default="p1"/>
+
+  <!-- 只加载该 prefix 的位置控制器 -->
+  <rosparam command="load"
+            file="$(find virtual_6dof)/config/virtual_6dof_controllers_$(arg prefix).yaml"/>
+
+  <!-- spawn 该 prefix 的位置控制器（不 spawn joint_state_controller） -->
+  <node name="controller_spawner_$(arg prefix)" pkg="controller_manager" type="spawner"
         output="screen" respawn="false"
-        args="joint_state_controller
-              virtual_6dof_x_trans_joint_position_controller
-              virtual_6dof_y_trans_joint_position_controller
-              virtual_6dof_z_trans_joint_position_controller
-              virtual_6dof_roll_joint_position_controller
-              virtual_6dof_pitch_joint_position_controller
-              virtual_6dof_yaw_joint_position_controller"/>
-  <node name="rqt_virtual_6dof" pkg="rqt_gui" type="rqt_gui" output="screen" 
-    args="--perspective-file $(find virtual_6dof)/config/virtual_6dof_publisher.perspective"/>
+        args="$(arg prefix)_virtual_6dof_x_trans_joint_position_controller
+              $(arg prefix)_virtual_6dof_y_trans_joint_position_controller
+              $(arg prefix)_virtual_6dof_z_trans_joint_position_controller
+              $(arg prefix)_virtual_6dof_roll_joint_position_controller
+              $(arg prefix)_virtual_6dof_pitch_joint_position_controller
+              $(arg prefix)_virtual_6dof_yaw_joint_position_controller"/>
 </launch>

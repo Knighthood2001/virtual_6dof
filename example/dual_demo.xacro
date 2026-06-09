@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot name="simple_lidar_on_platform" xmlns:xacro="http://wiki.ros.org/xacro">
   <material name="red"><color rgba="1 0 0 1"/></material>
+  <material name="green"><color rgba="0 1 0 1"/></material>
   <!-- 引入您的6DOF平台宏 -->
   <xacro:include filename="$(find virtual_6dof)/urdf/virtual_6dof.xacro" />
 
@@ -8,7 +9,7 @@
   <link name="world"/>
 
   <!-- 定义一个非常简单的雷达连杆（作为末端执行器） -->
-  <link name="simple_lidar_link">
+  <link name="simple_link1">
     <visual>
       <!-- 改为 URDF 支持的圆柱体 -->
       <geometry><cylinder length="0.1" radius="0.05"/></geometry>
@@ -21,20 +22,35 @@
       <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
     </inertial>
   </link>
+  <link name="simple_link2">
+    <visual>
+      <!-- 改为 URDF 支持的圆柱体 -->
+      <geometry><cylinder length="0.1" radius="0.05"/></geometry>
+      <material name="green"/>
+    </visual>
+    <!-- 碰撞体可以很小，但不能为零 -->
+    <collision><geometry><sphere radius="0.02"/></geometry></collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
+    </inertial>
+  </link>
+
+  <!-- ===================== 安装6DOF运动平台 ===================== -->
+  <!-- 直接将平台安装在“world”上，末端连接我们定义的简单雷达 -->
+  <xacro:virtual_6dof prefix="p1" parent_link="world" end_link="simple_link1">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="1 0 0" rpy="0 0 0"/>
+  </xacro:virtual_6dof>
+  <xacro:virtual_6dof prefix="p2" parent_link="world" end_link="simple_link2">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <origin xyz="-1 0 0" rpy="0 0 0"/>
+  </xacro:virtual_6dof>
+  
   <!-- 整个 URDF 共享一个 gazebo_ros_control 插件 -->
   <gazebo>
     <plugin name="virtual_6dof_gazebo_ros_control"
             filename="libgazebo_ros_control.so">
     </plugin>
   </gazebo>
-  <!-- ===================== 安装6DOF运动平台 ===================== -->
-  <!-- 直接将平台安装在“world”上，末端连接我们定义的简单雷达 -->
-  <xacro:virtual_6dof
-    prefix="p1"
-    parent_link="world"
-    end_link="simple_lidar_link">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </xacro:virtual_6dof>
-
 </robot>

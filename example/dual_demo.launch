@@ -8,24 +8,24 @@
   </include>
 
   <param name="robot_description"
-         command="$(find xacro)/xacro '$(find virtual_6dof)/example/demo.xacro'" />
+         command="$(find xacro)/xacro '$(find virtual_6dof)/example/dual_demo.xacro'" />
 
   <node name="spawn_model" pkg="gazebo_ros" type="spawn_model"
         args="-urdf -model vehicle_with_external_radar -param robot_description"
         output="screen"/>
 
-  <!-- 共享配置：joint_state_controller + gazebo_ros_control PID -->
   <rosparam command="load"
             file="$(find virtual_6dof)/config/virtual_6dof_controllers_shared.yaml"/>
 
-  <!-- joint_state_controller 只 spawn 一次 -->
   <node name="state_controller_spawner" pkg="controller_manager" type="spawner"
         output="screen" respawn="false"
         args="joint_state_controller"/>
 
-  <!-- 平台控制器 -->
   <include file="$(find virtual_6dof)/launch/virtual_6dof_control.launch">
     <arg name="prefix" value="p1"/>
+  </include>
+  <include file="$(find virtual_6dof)/launch/virtual_6dof_control.launch">
+    <arg name="prefix" value="p2"/>
   </include>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher"

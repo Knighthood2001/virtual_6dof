@@ -1,0 +1,20 @@
+# 关节状态控制器（共享，只 spawn 一次）
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50.0
+
+# gazebo_ros_control 级别的 PID gains（消除 "No p gain specified" 警告）
+gazebo_ros_control:
+  pid_gains:
+    p1_virtual_6dof_x_trans_joint: {p: 800.0, i: 0.0, d: 80.0}
+    p1_virtual_6dof_y_trans_joint: {p: 800.0, i: 0.0, d: 80.0}
+    p1_virtual_6dof_z_trans_joint: {p: 800.0, i: 0.0, d: 80.0}
+    p1_virtual_6dof_roll_joint: {p: 300.0, i: 0.0, d: 30.0}
+    p1_virtual_6dof_pitch_joint: {p: 300.0, i: 0.0, d: 30.0}
+    p1_virtual_6dof_yaw_joint: {p: 300.0, i: 0.0, d: 30.0}
+    p2_virtual_6dof_x_trans_joint: {p: 800.0, i: 0.0, d: 80.0}
+    p2_virtual_6dof_y_trans_joint: {p: 800.0, i: 0.0, d: 80.0}
+    p2_virtual_6dof_z_trans_joint: {p: 800.0, i: 0.0, d: 80.0}
+    p2_virtual_6dof_roll_joint: {p: 300.0, i: 0.0, d: 30.0}
+    p2_virtual_6dof_pitch_joint: {p: 300.0, i: 0.0, d: 30.0}
+    p2_virtual_6dof_yaw_joint: {p: 300.0, i: 0.0, d: 30.0}
