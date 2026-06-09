@@ -27,8 +27,7 @@ virtual_6dof/
 │   ├── virtual_6dof_controllers_p2.yaml   # 自动生成
 │   └── virtual_6dof_controllers_shared.yaml  # 自动生成
 ├── scripts/
-│   ├── gen_controllers_yaml.py    # 生成控制器配置 yaml
-│   └── lock_joints.py             # 启动时锁死关节避免 NaN
+│   └── gen_controllers_yaml.py    # 生成控制器配置 yaml
 ├── example/
 │   ├── demo.xacro                 # 单平台示例
 │   ├── dual_demo.xacro            # 双平台示例
@@ -103,15 +102,6 @@ rostopic pub /p2_virtual_6dof_x_trans_joint_position_controller/command \
     std_msgs/Float64 "data: 0.5" -1
 ```
 
-### rqt 图形界面
-
-launch 启动后 rqt 界面自动弹出，用滑块拖动即可实时控制。
-
-![rqt 控制界面](imgs/image.png)
-
-![关节状态](imgs/image-1.png)
-
----
 
 ## 在你自己的项目中复用
 

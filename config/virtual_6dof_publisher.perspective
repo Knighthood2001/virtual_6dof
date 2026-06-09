@@ -4,7 +4,7 @@
     "mainwindow": {
       "keys": {
         "geometry": {
-          "repr(QByteArray.hex)": "QtCore.QByteArray(b'01d9d0cb0003000000000171000002110000067e0000050700000171000002360000067e0000050700000000000000000a0000000171000002360000067e00000507')",
+          "repr(QByteArray.hex)": "QtCore.QByteArray(b'01d9d0cb0003000000000171000002110000067e0000050700000171000002360000067e0000050700000000000000000a0000000171000002360000067e000005070')",
           "type": "repr(QByteArray.hex)",
           "pretty-print": "     q   ~   q 6 ~        q 6 ~  "
         },
@@ -144,7 +144,22 @@
             "plugin": {
               "keys": {
                 "publishers": {
-                  "repr": "\"[{'topic_name': '/virtual_6dof_x_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 3, 'counter': 708, 'expressions': {'/virtual_6dof_x_trans_joint_position_controller/command/data': '2'}}, {'topic_name': '/virtual_6dof_y_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 4, 'counter': 561, 'expressions': {'/virtual_6dof_y_trans_joint_position_controller/command/data': '1'}}, {'topic_name': '/virtual_6dof_z_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 6, 'counter': 578, 'expressions': {'/virtual_6dof_z_trans_joint_position_controller/command/data': '1'}}, {'topic_name': '/virtual_6dof_roll_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 7, 'counter': 945, 'expressions': {'/virtual_6dof_roll_joint_position_controller/command/data': '0'}}, {'topic_name': '/virtual_6dof_pitch_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 8, 'counter': 931, 'expressions': {'/virtual_6dof_pitch_joint_position_controller/command/data': '0'}}, {'topic_name': '/virtual_6dof_yaw_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 9, 'counter': 891, 'expressions': {'/virtual_6dof_yaw_joint_position_controller/command/data': '0'}}]\"",
+                  "repr": "\"["
+                    # p1 平台
+                    "{'topic_name': '/p1_virtual_6dof_x_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 1, 'counter': 0, 'expressions': {'/p1_virtual_6dof_x_trans_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p1_virtual_6dof_y_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 2, 'counter': 0, 'expressions': {'/p1_virtual_6dof_y_trans_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p1_virtual_6dof_z_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 3, 'counter': 0, 'expressions': {'/p1_virtual_6dof_z_trans_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p1_virtual_6dof_roll_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 4, 'counter': 0, 'expressions': {'/p1_virtual_6dof_roll_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p1_virtual_6dof_pitch_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 5, 'counter': 0, 'expressions': {'/p1_virtual_6dof_pitch_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p1_virtual_6dof_yaw_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 6, 'counter': 0, 'expressions': {'/p1_virtual_6dof_yaw_joint_position_controller/command/data': '0'}},"
+                    # p2 平台
+                    "{'topic_name': '/p2_virtual_6dof_x_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 7, 'counter': 0, 'expressions': {'/p2_virtual_6dof_x_trans_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p2_virtual_6dof_y_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 8, 'counter': 0, 'expressions': {'/p2_virtual_6dof_y_trans_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p2_virtual_6dof_z_trans_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 9, 'counter': 0, 'expressions': {'/p2_virtual_6dof_z_trans_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p2_virtual_6dof_roll_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 10, 'counter': 0, 'expressions': {'/p2_virtual_6dof_roll_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p2_virtual_6dof_pitch_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 11, 'counter': 0, 'expressions': {'/p2_virtual_6dof_pitch_joint_position_controller/command/data': '0'}},"
+                    "{'topic_name': '/p2_virtual_6dof_yaw_joint_position_controller/command', 'type_name': 'std_msgs/Float64', 'rate': 10.0, 'enabled': False, 'publisher_id': 12, 'counter': 0, 'expressions': {'/p2_virtual_6dof_yaw_joint_position_controller/command/data': '0'}}"
+                  "]\"",
                   "type": "repr"
                 }
               },
